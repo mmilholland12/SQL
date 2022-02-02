@@ -55,6 +55,7 @@ CREATE TABLE tablename
 
 DROP TABLE <tablename>; 
 
+
 // Insert data
 
 INSERT INTO table_name(column_name) VALUES (data);
@@ -130,7 +131,112 @@ SELECT REVERSE('Hello World');
 
 // CHAR_LENGTH
 
-SELECT CONCAT(author_lname, ' is ', CHAR_LENGTH(author_lname), ' characters long') FROM books;
+SELECT CHAR_LENGTH('Hello World');
+
+
+// Upper and Lower
+
+SELECT UPPER('Hello World'); -> HELLO WORLD
+ 
+SELECT LOWER('Hello World'); -> hello world
+
+SELECT CONCAT('MY TV SHOW BOOK IS ', UPPER(show)) FROM tv_shows;
+ 
+SELECT CONCAT('MMY TV SHOW BOOK IS ', LOWER(show)) FROM tv_shows;
+
+
+// Distinct
+
+SELECT DISTINCT column_name FROM tablename;
+ 
+SELECT DISTINCT CONCAT(column_name1,' ', column_name2) FROM tablename;
+
+
+// ORDER BY
+
+SELECT column_name1, column_name2, column_name3 FROM tablename ORDER BY column_name1 (ASC or DESC);
+
+
+// Limit
+
+SELECT column_name1, column_name2 FROM tablename 
+ORDER BY column_name2 DESC LIMIT (number or results wanted);
+
+
+// LIKE
+
+SELECT column_name1, column_name2 FROM tablename WHERE column_name1 LIKE '%search value%'
+
+SELECT column_name1, stock_quantity FROM tablename WHERE stock_quantity LIKE '____';
+
+
+// Count
+
+SELECT COUNT(*) FROM tablename;
+
+SELECT COUNT(DISTINCT column_name) FROM tablename;
+
+SELECT COUNT(*) FROM tablename WHERE column_name LIKE '%search value%';
+
+
+// Group By
+
+SELECT column_name, COUNT(*) 
+FROM tablename GROUP BY column_name;
+
+SELECT column_name1, column_name2, COUNT(*) FROM tablename GROUP BY column_name1, column_name2;
+
+SELECT CONCAT('In ', released_year, ' ', COUNT(*), ' book(s) released') AS year FROM books GROUP BY released_year;
+
+// MIN and MAX
+
+SELECT MIN(column_name) 
+FROM tablename;
+
+SELECT MAX(column_name) 
+FROM tablename;
+
+SELECT column_name1, 
+       column_name2, 
+       Min(column_name3) 
+FROM   tablename 
+GROUP  BY column_name1, 
+          column_name2;
+
+
+// SUM
+
+SELECT SUM(column_name)
+FROM tablename;
+
+SELECT acolumn_name1, 
+       column_name2, 
+       SUM(column_name3) 
+FROM books
+GROUP BY
+    column_name1,
+    column_name2;
+    
+    
+// Average
+
+SELECT AVG(column_name1) 
+FROM tablename;
+
+SELECT column_name1, column_name2, AVG(column_name3) FROM tablename
+GROUP BY column_name1, column_name2;
+
+
+// CHAR and VARCHAR (CHAR = fixed, VARCHAR = variable)
+
+CREATE TABLE dogs (name CHAR(5), breed VARCHAR(10));
+
+
+
+
+
+
+
 
 
 

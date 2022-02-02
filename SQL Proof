@@ -1,0 +1,137 @@
+// List available databases
+
+show databases;
+
+
+// Create a database
+
+CREATE DATABASE database_name;
+
+
+// Delete a database
+
+DROP DATABASE database_name;
+
+
+// Create a TABLE
+
+     CREATE TABLE tablename
+      (
+        column_name data_type,
+        column_name data_type
+      );
+      
+      
+// Null and Not Null
+
+CREATE TABLE tablename
+      (
+        column_name data_type NOT NULL,
+        column_name data_type NOT NULL
+      );
+      
+      
+// DEFAULT
+
+    CREATE TABLE tablename
+      (
+        name VARCHAR(20) DEFAULT 'no name provided',
+        age INT DEFAULT 99
+      );
+      
+      
+// Primary Key
+
+        CREATE TABLE tablename
+      (
+        id INT NOT NULL,
+        name VARCHAR(100),
+        age INT,
+        PRIMARY KEY (id)
+      );
+      
+      
+// Drop a table
+
+DROP TABLE <tablename>; 
+
+// Insert data
+
+INSERT INTO table_name(column_name) VALUES (data);
+
+    
+// Multiple inserts
+
+INSERT INTO table_name 
+            (column_name, column_name) 
+VALUES      (value, value), 
+            (value, value), 
+            (value, value);
+            
+
+// Table Information
+
+DESC tablename;
+
+
+// Basic Select
+
+SELECT * FROM tablename;
+
+SELECT column_name1, columan_name2, column_name3 FROM tablename; 
+
+SELECT * FROM tablename WHERE column_name=value(INT);
+
+SELECT * FROM tablename WHERE column_name='value(CHAR)';
+
+
+// Deleting specific line from table
+
+DELETE FROM table_name WHERE column_name='value(CHAR)' or value(INT);
+
+
+// Delete all data from table
+
+DELETE FROM tablename;
+
+
+// CONCAT examples
+
+SELECT CONCAT('Hello', 'World'); // 
+ 
+SELECT CONCAT('Hello', '...', 'World');
+
+SELECT column_name1 AS alias, column_name2 AS alias, 
+  CONCAT(column_name1, ' ', column_name2) AS full
+FROM tablename;
+
+
+// Substring
+
+SELECT SUBSTRING('Hello World', Beginning character, End character);
+
+SELECT CONCAT
+    (
+        SUBSTRING(value,Beginning character, End character);
+    ) AS 'alias'
+FROM tablename;
+
+
+// REPLACE
+
+SELECT
+    SUBSTRING(REPLACE(value, 'what will be replaced', 'replacing with'), 1, 10) AS 'alias'
+FROM tablename;
+
+
+// Reverse
+
+SELECT REVERSE('Hello World');
+
+// CHAR_LENGTH
+
+SELECT CONCAT(author_lname, ' is ', CHAR_LENGTH(author_lname), ' characters long') FROM books;
+
+
+
+

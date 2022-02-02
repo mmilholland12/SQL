@@ -170,6 +170,12 @@ SELECT column_name1, column_name2 FROM tablename WHERE column_name1 LIKE '%searc
 SELECT column_name1, stock_quantity FROM tablename WHERE stock_quantity LIKE '____';
 
 
+// Not Like
+
+
+SELECT column_name1, column_name2 FROM tablename WHERE column_name1 NOT LIKE '%search value%'
+
+
 // Count
 
 SELECT COUNT(*) FROM tablename;
@@ -209,7 +215,7 @@ GROUP  BY column_name1,
 SELECT SUM(column_name)
 FROM tablename;
 
-SELECT acolumn_name1, 
+SELECT column_name1, 
        column_name2, 
        SUM(column_name3) 
 FROM books
@@ -232,14 +238,154 @@ GROUP BY column_name1, column_name2;
 CREATE TABLE tablename (column_name1 CHAR(5), column_name2 VARCHAR(10));
 
 
+// Decimal
+
+CREATE TABLE stock(price DECIMAL(number of digits,decimal places));
 
 
+// Float and Double (Approximate values)
+
+CREATE TABLE stock (price FLOAT);
 
 
+//Timestamp
+
+CREATE TABLE comments (
+    content VARCHAR(100),
+    created_at TIMESTAMP DEFAULT NOW()
+);
 
 
+// Not Equal (!=)
+
+ 
+SELECT column_name1, column_nams2 FROM tablename WHERE column_name2 != 'value';
+
+SELECT column_name1, column_nams2 FROM tablename WHERE column_name1 != INT value;
+
+// Less than amd Greater than
+
+ 
+SELECT column_name1, column_name2 FROM tablename
+WHERE column_name2 < 2000;
+
+SELECT column_name1, column_name2 FROM tablename
+WHERE column_name2 <= 2000;
+
+SELECT column_name1, column_name2 FROM tablename
+WHERE column_name2 > 2000;
+
+SELECT column_name1, column_name2 FROM tablename
+WHERE column_name2 >= 2000;
 
 
+// Logical AND
+
+SELECT  
+    column_name1, 
+    column_name2, 
+    column_name3 FROM tablename
+WHERE column_name2='Value' 
+    AND column_name3 > 2010;
+    
+
+// Logical OR
+
+SELECT  
+    column_name1, 
+    column_name2, 
+    column_name3 FROM tablename
+WHERE column_name2='Value' 
+    OR column_name3 > 2010;
 
 
+SELECT  
+    column_name1, 
+    column_name2, 
+    column_name3 FROM tablename
+WHERE column_name2='Value' || column_name3 > 2010;
+
+
+// Between
+
+
+SELECT column_name1, column_name2 FROM tablename 
+WHERE column_name1 BETWEEN 2004 AND 2015;
+
+
+// Cases
+
+
+SELECT column_name1, column_name2,
+       CASE 
+         WHEN column_name2 >= 50 THEN 'Value1'
+         ELSE 'Value2'
+       END AS GENRE
+       FROM books;
+       
+SELECT column_name1, column_name2,
+    CASE 
+        WHEN column_name2 BETWEEN 0 AND 50 THEN '*'
+        WHEN column_name2 BETWEEN 51 AND 100 THEN '**'
+        WHEN column_name2 BETWEEN 101 AND 150 THEN '***'
+        ELSE '****'
+    END AS STOCK
+FROM books;
+
+
+// Foreign Keys
+
+    CREATE TABLE tablename1(
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        column_name1 VARCHAR(100),
+        column_name2 VARCHAR(100),
+        column_name3 VARCHAR(100)
+    );
+    CREATE TABLE tablename2(
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        column_name4 DATE,
+        column_name5 DECIMAL(8,2),
+        id_2 INT,
+        FOREIGN KEY(id_2) REFERENCES tablename1(id)
+    );
+    
+    
+    // Cross Joins
+    
+    SELECT id FROM tablename1 WHERE column_name1='value';
+    SELECT * FROM column_name4 WHERE id_2= 1;
+    
+    // Inner Join
+    
+    SELECT *
+FROM tablename2
+JOIN tablename1
+    ON tablename1.id = tablename2.id_2;
+    
+    
+    // Left Joins
+    
+   SELECT 
+        column_name1, 
+        column_name2,
+        IFNULL(SUM(column_name3), 0) AS  'alias'
+    FROM tablename1
+    LEFT JOIN tablename2
+        ON tablename1.id = tablename2.id_2
+    GROUP BY tablename1.id
+    ORDER BY 'alias';\
+    
+    
+    // Right Join
+    
+    SELECT 
+        IFNULL(column_name1,'MISSING') AS 'alias', 
+        IFNULL(column_name2,'USER') AS 'alias', 
+        column_name3, 
+        column_name4, 
+        SUM(column_name5) AS 'alais'
+    FROM tablename1
+    RIGHT JOIN tablename2
+        ON tablename1.id = tablename2.id_2
+    GROUP BY column_name1, column_name2;
 

@@ -1,1 +1,1 @@
-Meant to demonstrate knowledge of SQL sqntax and logic
+Meant to demonstrate knowledge of SQL syntax and logic

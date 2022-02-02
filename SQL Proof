@@ -229,7 +229,9 @@ GROUP BY column_name1, column_name2;
 
 // CHAR and VARCHAR (CHAR = fixed, VARCHAR = variable)
 
-CREATE TABLE dogs (name CHAR(5), breed VARCHAR(10));
+CREATE TABLE tablename (column_name1 CHAR(5), column_name2 VARCHAR(10));
+
+
 
 
 
